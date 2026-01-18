@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Báo bất cần đời</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,154 +17,229 @@
             background-color: #f4f4f9;
             color: #333;
         }
+
         header {
             text-align: center;
             background-color: #87CEEB;
             color: #fff;
             padding: 20px 0;
         }
-        h1 {
-            margin: 0;
-        }
-        h2 {
-            margin: 10px 0;
-        }
-        hr {
-            border: 1px solid #ccc;
-            margin: 20px 0;
-        }
+
         .content {
             padding: 20px;
             max-width: 800px;
-            margin: auto;
+            margin: 20px auto;
             background: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+        }
+
+        hr {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
         img {
             display: block;
             margin: 20px auto;
             border-radius: 8px;
         }
-        p {
-            margin: 10px 0;
-        }
+
         ul {
             list-style-type: square;
             padding-left: 20px;
         }
-        ul li {
-            margin: 5px 0;
-        }
+
         ul li a {
             text-decoration: none;
             color: #007BFF;
         }
+
         ul li a:hover {
             text-decoration: underline;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
+
         table th, table td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: center;
         }
+
         table th {
             background-color: #87CEEB;
             color: #fff;
         }
+
         iframe {
             display: block;
             margin: 20px auto;
-            border: none;
             border-radius: 8px;
         }
+
         .highlight {
             color: red;
             font-weight: bold;
         }
+
+        #map {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
         footer {
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             background-color: #333;
             color: #fff;
-            margin-top: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
+
 <body>
-    <header>
-        <h1>Báo bất cần đời</h1>
-    </header>
-    <div class="content">
-        <h1 style="background-color: lightblue;">Báo bất cần đời</h1>
-        <h2 style="text-align: right; background-color: lightyellow;">Hà Nội, ngày 28/12/2025</h2>
-        <h1 style="color: red; text-align:center;">Bình - Người xã hội chủ nghĩa kiên trung</h1>
-        <h2>Thông tin về nhân vật:</h2>
-        <p>
-            - Là một người có chim màu trắng trong huyền thoại khi mà đã đánh bại <b>5 anh da đen</b><br>
-            - Là nhà thơ, nhà báo, chính trị gia và là lãnh đạo tổ chức phi chính phủ Tổ chức Trào Phúng đồng thời là nhà sáng lập báo Binh's Trao Phung View
-        </p>
-        <p>
-            Ngày ấy đã đến<br>
-            Tuổi mười bốn, hỡi tuổi mười bốn<br>
-            Cái tuổi █████, █████, hứng tình<br>
-            "Ước gì ta là bao tay,<br>
-            Để được mơn trớn má đào".<br>
-            Thời đại hoàng kim đã đến<br>
-            Khi xã hội không còn phân biệt đối xử<br>
-            Hoàng và Khánh ghì chặt đôi môi<br>
-            Hứa sẽ mãi bên nhau<br>
-            Dưới ánh trăng mù sương.<br>
-            (Trích trong bài thơ hay nhất của Bình)
-        </p>
-        <p style="font-size: large; text-align: left;">Thông tin</p>
-        <ul>
-            <li><a href="https://www.youtube.com/@thatbostic">Kênh youtube của Bình</a></li>
-            <li><a href="https://en.wikipedia.org/wiki/User:ThatBostic">Wikipedia của Bình</a></li>
-            <li><a href="https://www.chess.com/member/mawije">Là kì thủ cờ vua</a></li>
-            <li><a href="btpv.substack.com">Báo của Bình</a></li>
-        </ul>
-        <h3>GENERAL SECRETARY 2025-27 ELECTION</h3>
-        <table>
-            <tr>
-                <th>Candidates-Party</th>
-                <th>Votes</th>
-                <th>Electoral Votes</th>
-            </tr>
-            <tr>
-                <td>orthodoron(S)</td>
-                <td>4</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>ntmtri_39816(I)</td>
-                <td>0</td>
-                <td>0</td>
-            </tr>
-        </table>
-        <hr>
-        <h1 style="background-color: lightblue;">Báo bất cần đời</h1>
-        <h2 style="text-align: right; background-color: lightyellow;">Hà Nội, ngày 29/12/2025</h2>
-        <hr>
-        <h1 style="text-align: center; color: red;">Kiếp nạn kì thi môn lịch sử và địa lý</h1>
-        <p>"Tôi chỉ muốn ngủ thôi" Bk said <br>Theo chúng tôi thấy, người trông thi thứ nhất <b>cô Linh</b> rất là nghiêm khắc khi mà nhiều học sinh cũng nói rằng cô như được "lập trình".</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/PrsRbldqufQ?si=FhmeVcjE8DJ0UOLF" title="YouTube video player" allowfullscreen></iframe>
-        <p>
-            Tuy nhiên, vẫn có một số học sinh cho rằng cô trông rất là dễ do các em đã học thuộc bài và nắm chắc kiến thức trước khi bước vào phòng thi. Nhiều học sinh khác lại nhận định rằng việc cô trông thi nghiêm túc như vậy là hoàn toàn cần thiết, bởi điều đó giúp đảm bảo tính công bằng, trung thực trong các kỳ kiểm tra, đồng thời rèn luyện cho học sinh ý thức kỷ luật và trách nhiệm. <br>
-            Tuy vậy, vẫn còn không ít ý kiến trái chiều. Một số học sinh cho rằng việc cô trông thi quá nghiêm khắc là không thật sự cần thiết, bởi điều này có thể gây tâm lý căng thẳng, lo lắng cho thí sinh. Áp lực tâm lý kéo dài trong phòng thi có thể ảnh hưởng tiêu cực đến sức khỏe, làm tăng nguy cơ mệt mỏi, stress, thậm chí gây ra những vấn đề nghiêm trọng như <span class="highlight">đau tim, suy giảm sức khỏe và ảnh hưởng đến tuổi thọ</span>.
-        </p>
-        <img style="width: 200px; height: 200px" src="https://media.tenor.com/ZObqvh1KAqQAAAAe/pain-chest-pain.png" alt="image">
-        <p>
-            Trước những ý kiến khác nhau đó, nhiều người cho rằng việc trông thi cần có sự cân bằng giữa sự nghiêm túc và sự nhẹ nhàng. Giáo viên trông thi không chỉ đóng vai trò giám sát mà còn là người tạo ra một môi trường thi cử an toàn, công bằng nhưng vẫn giúp học sinh giữ được tâm lý ổn định để làm bài tốt nhất.
-        </p>
-    </div>
-    <footer>
-        <p>&copy; 2025 Báo bất cần đời. All rights reserved. <br> Chủ tịch Báo bất cần đời <br> orthodoron (Binh)
-    </footer>
+
+<header>
+    <h1>Báo bất cần đời</h1>
+</header>
+
+<div class="content">
+
+    <h1 style="background-color: lightblue;">Báo bất cần đời</h1>
+    <h2 style="text-align:right; background-color: lightyellow;">Hà Nội, ngày 28/12/2025</h2>
+
+    <h1 style="color:red; text-align:center;">Bình - Người xã hội chủ nghĩa kiên trung</h1>
+
+    <p>
+        - Là một người có chim màu trắng trong huyền thoại khi mà đã đánh bại <b>5 anh da đen</b><br>
+        - Là nhà thơ, nhà báo, chính trị gia và là lãnh đạo tổ chức phi chính phủ
+    </p>
+
+    <p>
+        Ngày ấy đã đến<br>
+        Tuổi mười bốn, hỡi tuổi mười bốn<br>
+        Cái tuổi █████, █████, hứng tình<br>
+        "Ước gì ta là bao tay,<br>
+        Để được mơn trớn má đào".<br>
+        Thời đại hoàng kim đã đến<br>
+        Khi xã hội không còn phân biệt đối xử<br>
+        Hoàng và Khánh ghì chặt đôi môi<br>
+        Hứa sẽ mãi bên nhau<br>
+        Dưới ánh trăng mù sương.
+    </p>
+
+    <ul>
+        <li><a href="https://www.youtube.com/@thatbostic">Kênh YouTube của Bình</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/User:ThatBostic">Wikipedia của Bình</a></li>
+        <li><a href="https://www.chess.com/member/mawije">Là kì thủ cờ vua</a></li>
+        <li><a href="https://btpv.substack.com">Báo của Bình</a></li>
+    </ul>
+
+    <h3>GENERAL SECRETARY 2025-27 ELECTION</h3>
+
+    <table>
+        <tr>
+            <th>Candidates-Party</th>
+            <th>Votes</th>
+            <th>Electoral Votes</th>
+        </tr>
+        <tr>
+            <td>orthodoron (S)</td>
+            <td>4</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>ntmtri_39816 (I)</td>
+            <td>0</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <h1 style="background-color: lightblue;">Báo bất cần đời</h1>
+    <h2 style="text-align:right; background-color: lightyellow;">Hà Nội, ngày 29/12/2025</h2>
+
+    <h1 style="text-align:center; color:red;">Kiếp nạn kì thi môn lịch sử và địa lý</h1>
+
+    <p>
+        "Tôi chỉ muốn ngủ thôi" – Bk said.<br>
+        Theo nhiều học sinh, cô <b>Linh</b> trông thi rất nghiêm khắc.
+    </p>
+
+    <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/PrsRbldqufQ"
+        allowfullscreen>
+    </iframe>
+
+    <p>
+        Tuy nhiên, cũng có ý kiến cho rằng việc trông thi nghiêm là cần thiết
+        để đảm bảo công bằng. Một số học sinh khác cho rằng áp lực quá mức
+        có thể gây <span class="highlight">stress, suy giảm sức khỏe</span>.
+    </p>
+
+    <img src="https://media.tenor.com/ZObqvh1KAqQAAAAe/pain-chest-pain.png"
+         width="200" height="200" alt="pain">
+
+    <hr>
+
+    <h1 style="background-color: lightblue;">Báo bất cần đời</h1>
+    <h2 style="text-align:right; background-color: lightyellow;">Tổng hợp từ Internet</h2>
+
+    <h1 style="text-align:center; color:red;">Giả lập sinh - mất</h1>
+
+    <div id="map"></div>
+
+</div>
+
+<footer>
+    <p>
+        © 2025 Báo bất cần đời. All rights reserved.<br>
+        Chủ tịch Báo: orthodoron (Bình)
+    </p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    const map = L.map('map').setView([20, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    function randomLocation() {
+        return [
+            Math.random() * 170 - 85,
+            Math.random() * 360 - 180
+        ];
+    }
+
+    function spawn(color) {
+        const marker = L.circleMarker(randomLocation(), {
+            radius: 5,
+            color,
+            fillOpacity: 0.9
+        }).addTo(map);
+
+        setTimeout(() => map.removeLayer(marker), 5000);
+    }
+
+    setInterval(() => {
+        spawn('#22c55e');
+        spawn('#ef4444');
+    }, 1000);
+</script>
+
 </body>
 </html>
